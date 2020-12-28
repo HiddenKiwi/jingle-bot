@@ -1,2 +1,8 @@
 discord:
   token: ${discord.secret.token:undefined}
+
+ibm:
+  tts:
+    api:
+      key: ${ibm.tts.secret.api.key:undefined}
+      url: ${ibm.tts.api.url:undefined}
