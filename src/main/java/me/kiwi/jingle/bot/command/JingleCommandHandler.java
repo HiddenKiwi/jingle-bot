@@ -10,6 +10,7 @@ import discord4j.core.event.domain.message.MessageCreateEvent;
 import discord4j.core.object.entity.Guild;
 import discord4j.core.object.entity.channel.VoiceChannel;
 import me.kiwi.jingle.bot.audio.AudioPlayerManagerFacade;
+import me.kiwi.jingle.bot.configuration.JingleBotProperties;
 import me.kiwi.jingle.bot.util.GuildUtils;
 
 @Component
@@ -19,12 +20,15 @@ public class JingleCommandHandler extends AbstractMessageCreateEventSubscriber {
 	
 	private final AudioPlayerManagerFacade audioPlayerManagerFacade;
 	
+	private final JingleBotProperties jingleBotProperties;
+	
 	private final Environment environment;
 	
 	public JingleCommandHandler(GatewayDiscordClient gateway, AudioPlayerManagerFacade audioPlayerManagerFacade,
-			Environment environment) {
+			JingleBotProperties jingleBotProperties, Environment environment) {
 		super(gateway);
 		this.audioPlayerManagerFacade = audioPlayerManagerFacade;
+		this.jingleBotProperties = jingleBotProperties;
 		this.environment = environment;
 	}
 
@@ -55,7 +59,7 @@ public class JingleCommandHandler extends AbstractMessageCreateEventSubscriber {
 
 	@Override
 	protected String getCommandName() {
-		return "/jingle";
+		return this.jingleBotProperties.getCommandPrefix();
 	}
 
 	@Override

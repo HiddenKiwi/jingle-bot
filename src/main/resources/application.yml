@@ -1,2 +1,5 @@
 discord:
   token: ${discord.secret.token:undefined}
+
+jingle-bot:
+  command-prefix: ${bot.command.prefix:>}
