@@ -3,3 +3,14 @@ discord:
 
 jingle-bot:
   command-prefix: ${bot.command.prefix:>}
+     
+---
+
+spring:
+  profiles:
+    active: default, local
+  h2:
+    console:
+      enabled: true
+  datasource:
+    url: jdbc:h2:mem:testdb
