@@ -3,23 +3,24 @@ discord:
 
 jingle-bot:
   command-prefix: ${bot.command.prefix:>}
-     
+  
+server:
+  servlet:
+    context-path: /api  
 ---
-
 spring:
-  profiles:
-    active: default, local
+  profiles: local
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
   h2:
     console:
       enabled: true
   datasource:
     url: jdbc:h2:mem:testdb
-    
+    driverClassName: org.h2.Driver
 ---
-
 spring:
-  profiles:
-    active: prod
+  profiles: prod
   datasource:
     url: ${JDBC_DATABASE_URL}
     username: ${JDBC_DATABASE_USERNAME}
